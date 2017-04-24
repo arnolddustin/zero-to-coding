@@ -18,9 +18,19 @@ Now that it's installed, the Angular CLI can be used to generate Angular project
 Now that your application has been created, let's make sure it runs.
 1. Open a command prompt to the *part1-demo* folder that was created in the last step.
 2. Run the Angular CLI command: `ng serve`.  This will build and start the application.
-3. Open a web browser to [http://localhost:4200](http://localhost:4200) and you should see a web page that says **App works!**
+3. Open a web browser to [http://localhost:4200](http://localhost:4200) and you should see a web page that says **app works!**
+4. Leave both the command line and browser windows open.
 
 ## Customize the generated application
-Now that we have an 
-3. Change to the newly create `part1-demo` folder
-4. 
+Now that we have a working Angular web application, let's customize it and make it a true **Hello World** application.
+1. Start Visual Studio Code
+2. Choose File -> Open Folder from the menu
+3. Browse to the *part1-demo* folder
+3. In the left pane, expand the treeview to the **src -> app** folder
+4. Click the **app.component.ts** file to open it in the editor window
+5. Change the text on line #9 from `app works!` to `Hello world!`
+6. Save the file
+7. View the open app in your web browser...the page should automatically refresh and display your updated application.  It should now say **Hello world!**
+
+## Success!
+You have succesfully completed the walk-through for *Part 1: Hello World*, and are on your way from ***Zero to Coding***!
