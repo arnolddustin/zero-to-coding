@@ -13,7 +13,7 @@ To begin, you'll need to install the frameworks and applications needed to write
 
 ### Part 1: Hello World
 This is the step-by-step walkthrough demonstrated in the ***Part 1: Hello World*** session.
-To begin the walkthrough, click here for the [Part 1: Hello World walkthrough](../blob/part1/README.md)
+To begin the walkthrough, click here for the [Part 1: Hello World walkthrough](./walkthroughs/part1.md)
 
 ## Download and run the samples
 This section describes how to connect and download the samples from the **git** repository, then how to build and run the ***Part 1: Hello World*** sample app.
@@ -23,4 +23,6 @@ This section describes how to connect and download the samples from the **git** 
 3. Checkout the *part1* branch by typing `git checkout part1`. This points your computer's git repository to code created during the ***Part 1: Hellow World*** walk-through.
 
 ## Further information
+
+* Other walk-throughs can be found [here](./walkthroughs/README.md)
 * **Angular** Web App framework [https://angular.io](https://angular.io)
