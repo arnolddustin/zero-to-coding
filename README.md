@@ -16,11 +16,14 @@ This is the step-by-step walkthrough demonstrated in the ***Part 1: Hello World*
 To begin the walkthrough, click here for the [Part 1: Hello World walkthrough](./walkthroughs/part1.md)
 
 ## Download and run the samples
-This section describes how to connect and download the samples from the **git** repository, then how to build and run the ***Part 1: Hello World*** sample app.
+This section describes how to connect and download the samples from the **git** repository, then how to build and run the sample app.
 
 1. Open a command prompt
 2. Clone the git repository by typing `git clone https://github.com/arnolddustin/zero-to-coding.git`.  This command makes a copy of the repository on your computer. 
-3. Checkout the *part1* branch by typing `git checkout part1`. This points your computer's git repository to code created during the ***Part 1: Hellow World*** walk-through.
+3. Checkout the *part1* branch by typing `git checkout part1`. This points your computer's git repository to code created during the [Part 1: Hellow World](./walkthroughs/part1.md) walk-through.
+4. Open the *zero-to-coding-app* folder
+5. Run the app by typing `ng serve`
+6. Open a web browser to [http://localhost:4200](http://localhost:4200) to run the application in your browser.
 
 ## Further information
 
