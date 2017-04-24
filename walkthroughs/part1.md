@@ -4,7 +4,7 @@
 See the [repository homepage](../README.md) for instructions on installing prerequisites.
 
 ## Install Angular
-This walkthrough requires the Anguarl JavaScript framework. The easiest way to work with Angular is to use the Angular Command Line Interface (CLI).
+This walkthrough requires the Angular JavaScript framework. The easiest way to work with Angular is to use the Angular Command Line Interface (CLI).
 1. Open a command prompt
 2. Run the command `npm install -g @angular/cli` to install the Angular CLI.
 3. Wait for installation to complete
