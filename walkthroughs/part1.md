@@ -1,7 +1,7 @@
 # Part 1: Hello World
 
 ## Getting started
-See the repository homepage at [http://github.com/arnolddustin/zero-to-coding](http://github.com/arnolddustin/zero-to-coding) for instructions on installing prerequisites.
+See the [repository homepage](../README.md) for instructions on installing prerequisites.
 
 ## Install Angular
 This walkthrough requires the Anguarl JavaScript framework. The easiest way to work with Angular is to use the Angular Command Line Interface (CLI).
