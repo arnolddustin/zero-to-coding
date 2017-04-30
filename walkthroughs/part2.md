@@ -37,7 +37,7 @@ This will connect our new Health Data component to the rest of the application.
 <app-health-data></app-health-data>
 ```
 7. Save the file
-8. View app in your web browser.  You should now see **Health Component Works!** below the *Hello World* title.
+8. View app in your web browser.  You should now see *health-data works!* below the ***Hello World!*** title.
 
 ## Create our Health Data service
 This will create a new Angular service that will provide data to our health data component. The Health Data service will be responsible for fetching the health data from an online API.
@@ -45,29 +45,73 @@ This will create a new Angular service that will provide data to our health data
 2. Run the Angular CLI command: `ng generate service health-data`.  This will create a new Angular service called *HealthDataService*.
 3. In Visual Studio Code, expand the file treeview (in the left pane) to the **src -> app** folder
 4. Click the **health-data.service.ts** file to open it in the editor window
-5. Replace the contents of the file with the following:
+5. Update the code to the following:
 ```typescript
-// this will be the service source code hooked to some fake data
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class HealthDataService {
+
+  healthdata: any[] = [];
+
+  constructor() {
+    this.healthdata.push([1, 'A7C1B420-D459-41BE-856A-F3CD1887600F', 1, 1470985749, '912986', 1470985749, '912986', null, '2013', '1', 'Albany Medical Center Hospital', '1239', '28220', '439.05', '1238.08', '438.72', '351.27', '0.92']);
+    this.healthdata.push([2, 'A1F3DD92-48D6-4E64-A57B-76286D120D40', 2, 1470985749, '912986', 1470985749, '912986', null, '2013', '2', 'Albany Medical Center - South Clinical Campus', '1', '34', '294.12', '0.38', '110.31', '935.91', '0.63']);
+    this.healthdata.push([3, '311139DA-B471-4C2B-9911-60685A586E24', 3, 1470985749, '912986', 1470985749, '912986', null, '2013', '4', 'Albany Memorial Hospital', '76', '2946', '257.98', '128.86', '437.40', '207.02', '-52.86']);
+  }
+
+  getHealthData() {
+    return this.healthdata;
+  }
+}
 ```
 6. Now the service is ready to be used to return some sample data
 
 ## Connect our Health Data component to the Health Data service
 This will connect our new Health Data component to the new Health Data service.  
-1. In Visual Studio Code, expand the treeview to the **src -> app -> health-service** folder
-2. Click the **health-service.component.ts** file to open it in the editor window
-3. Copy and past the following code in the file:
+1. In Visual Studio Code, expand the treeview to the **src -> app -> health-data** folder
+2. Click the **health-data.component.ts** file to open it in the editor window
+3. Updated the code to the following:
 ```typescript
-// this will be the component source code hooked up to the service
+import { Component, OnInit } from '@angular/core';
+import { HealthDataService } from '../health-data.service';
+
+@Component({
+  selector: 'app-health-data',
+  templateUrl: './health-data.component.html',
+  styleUrls: ['./health-data.component.css'],
+  providers: [HealthDataService]
+})
+export class HealthDataComponent implements OnInit {
+
+  private healthData: any[] = [];
+
+  constructor(private healthDataService: HealthDataService) { }
+
+  ngOnInit() {
+    this.healthData = this.healthDataService.getHealthData();
+  }
+}
 ```
 4. Save the file
 
 ## Update the view template for the Health Data component
 This will create the user interface for our Health Data component, displaying the data provided by the Health Data service.
-1. In Visual Studio Code, expand the treeview to the **src -> app -> health-service** folder
-2. Click the **health-service.component.html** file to open it in the editor window
-3. Copy and past the following code in the file:
+1. In Visual Studio Code, expand the treeview to the **src -> app -> health-data** folder
+2. Click the **health-data.component.html** file to open it in the editor window
+3. Update the code to the following:
 ```html
-<!-- this will be the HTML for the view -->
+<p>
+  health-data works!
+</p>
+<table>
+ <tr *ngFor="let row of healthData">
+  <td>{{row[10]}}</td>
+  <td>{{row[11]}}</td>
+  <td>{{row[12]}}</td>
+  <td>{{row[13]}}</td>
+ </tr>
+</table>
 ```
 4. Save the file
 5. Open your web browser.  You should now see our sample data.
