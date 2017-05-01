@@ -10,10 +10,14 @@ import { HealthDataService } from '../health-data.service';
 export class HealthDataComponent implements OnInit {
 
   private healthData: any[] = [];
+  private errorMessage: any = '';
 
   constructor(private healthDataService: HealthDataService) { }
 
   ngOnInit() {
-    this.healthData = this.healthDataService.getHealthData();
+    this.healthDataService.getHealthData()
+      .subscribe(
+      data => this.healthData = data,
+      error => this.errorMessage = <any>error);
   }
 }

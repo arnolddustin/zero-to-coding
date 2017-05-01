@@ -1,17 +1,34 @@
 import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class HealthDataService {
 
-  healthdata: any[] = [];
+  private apiUrl = 'https://health.data.ny.gov/api/views/s3du-3m47/rows.json?accessType=DOWNLOAD';
 
-  constructor() {
-    this.healthdata.push([1, 'A7C1B420-D459-41BE-856A-F3CD1887600F', 1, 1470985749, '912986', 1470985749, '912986', null, '2013', '1', 'Albany Medical Center Hospital', '1239', '28220', '439.05', '1238.08', '438.72', '351.27', '0.92']);
-    this.healthdata.push([2, 'A1F3DD92-48D6-4E64-A57B-76286D120D40', 2, 1470985749, '912986', 1470985749, '912986', null, '2013', '2', 'Albany Medical Center - South Clinical Campus', '1', '34', '294.12', '0.38', '110.31', '935.91', '0.63']);
-    this.healthdata.push([3, '311139DA-B471-4C2B-9911-60685A586E24', 3, 1470985749, '912986', 1470985749, '912986', null, '2013', '4', 'Albany Memorial Hospital', '76', '2946', '257.98', '128.86', '437.40', '207.02', '-52.86']);
+  constructor(private http: Http) { }
+  getHealthData(): Observable<any[]> {
+    return this.http.get(this.apiUrl)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
-
-  getHealthData() {
-    return this.healthdata;
+  private extractData(res: Response) {
+    let body = res.json();
+    return body.data || {};
+  }
+  private handleError(error: Response | any) {
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
   }
 }

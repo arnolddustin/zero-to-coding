@@ -116,16 +116,78 @@ This will create the user interface for our Health Data component, displaying th
 4. Save the file
 5. Open your web browser.  You should now see our sample data.
 
-## Update the Health Data service to fetch some real data from an API
+## Update the Health Data service and component to use an API
 This step will update our Health Data service to fetch information from a [www.healthdata.gov](https://www.healthdata.gov) API and provide it our component instead of using sample data.
 1. In Visual Studio Code, expand the treeview to the **src -> app** folder
 2. Click the **health-data.service.ts** file to open it in the editor window
 3. Copy and past the following code in the file:
 ```typescript
-// this will be the final service code
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+
+@Injectable()
+export class HealthDataService {
+
+  private apiUrl = 'https://health.data.ny.gov/api/views/s3du-3m47/rows.json?accessType=DOWNLOAD';
+
+  constructor(private http: Http) { }
+  getHealthData(): Observable<any[]> {
+    return this.http.get(this.apiUrl)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+  private extractData(res: Response) {
+    let body = res.json();
+    return body.data || {};
+  }
+  private handleError(error: Response | any) {
+    let errMsg: string;
+    if (error instanceof Response) {
+      const body = error.json() || '';
+      const err = body.error || JSON.stringify(body);
+      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+    } else {
+      errMsg = error.message ? error.message : error.toString();
+    }
+    console.error(errMsg);
+    return Observable.throw(errMsg);
+  }
+}
 ```
 4. Save the file
-5. Open your web browser.  You should now see the real data displayed.
+5. In Visual Studio Code, expand the treeview to the **src -> app -> health-data** folder
+6. Click the **health-data.component.ts** file to open it in the editor window
+3. Update the code to the following:
+```typescript
+import { Component, OnInit } from '@angular/core';
+import { HealthDataService } from '../health-data.service';
+
+@Component({
+  selector: 'app-health-data',
+  templateUrl: './health-data.component.html',
+  styleUrls: ['./health-data.component.css'],
+  providers: [HealthDataService]
+})
+export class HealthDataComponent implements OnInit {
+
+  private healthData: any[] = [];
+  private errorMessage: any = '';
+
+  constructor(private healthDataService: HealthDataService) { }
+
+  ngOnInit() {
+    this.healthDataService.getHealthData()
+      .subscribe(
+      data => this.healthData = data,
+      error => this.errorMessage = <any>error);
+  }
+}
+```
+4. Save the file
+5. Open your web browser.  You should now see our sample data.
 
 ## Success!
 You have succesfully completed the walk-through for *Part 2: Hello Data*, and are on your way from ***Zero to Coding***!
