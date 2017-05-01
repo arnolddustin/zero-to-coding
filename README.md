@@ -26,8 +26,9 @@ This section describes how to connect and download the samples from the **git** 
 2. Clone the git repository by typing `git clone https://github.com/arnolddustin/zero-to-coding.git`.  This command makes a copy of the repository on your computer. 
 3. Checkout the *part1* branch by typing `git checkout part1`. This points your computer's git repository to code created during the [Part 1: Hellow World](./walkthroughs/part1.md) walk-through.
 4. Open the *zero-to-coding-app* folder
-5. Run the app by typing `ng serve`
-6. Open a web browser to [http://localhost:4200](http://localhost:4200) to run the application in your browser.
+5. Install npm packages by typing `npm install`.
+6. Run the app by typing `ng serve`
+7. Open a web browser to [http://localhost:4200](http://localhost:4200) to run the application in your browser.
 
 ## Further information
 
