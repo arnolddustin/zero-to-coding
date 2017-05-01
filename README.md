@@ -15,6 +15,10 @@ To begin, you'll need to install the frameworks and applications needed to write
 This is the step-by-step walkthrough demonstrated in the ***Part 1: Hello World*** session.
 To begin the walkthrough, click here for the [Part 1: Hello World walkthrough](./walkthroughs/part1.md)
 
+### Part 2: Hello Data
+This is the step-by-step walkthrough demonstrated in the ***Part 2: Hello Data*** session.
+To begin the walkthrough, click here for the [Part 2: Hello Data walkthrough](./walkthroughs/part2.md)
+
 ## Download and run the samples
 This section describes how to connect and download the samples from the **git** repository, then how to build and run the sample app.
 
